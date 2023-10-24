@@ -11,6 +11,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Initiate structure
 type Movie struct {
 	ID       string    `json:"id"`
 	Isbn     string    `json:"isbn"`
@@ -24,11 +25,13 @@ type Director struct {
 
 var movies []Movie
 
+// Call to retrieve full list of movies
 func getMovies(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(movies)
 }
 
+// Call to retrieve single movie
 func getMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -44,6 +47,7 @@ func getMovie(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Post to create a new movie entry
 func createMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var movie Movie
@@ -53,6 +57,7 @@ func createMovie(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(movie)
 }
 
+// Put to update an existing record
 func updateMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -71,6 +76,7 @@ func updateMovie(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Delete a movie record
 func deleteMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -86,8 +92,9 @@ func deleteMovie(w http.ResponseWriter, r *http.Request) {
 func main() {
 	r := mux.NewRouter()
 
+	// Create dummy entries to test GET methods
 	movies = append(movies, Movie{ID: "1", Isbn: "438227", Title: "Movie One", Director: &Director{Firstname: "Martin", Lastname: "Marinov"}})
-	movies = append(movies, Movie{ID: "2", Isbn: "293764", Title: "Movie Two", Director: &Director{Firstname: "Bo", Lastname: "Bo"}})
+	movies = append(movies, Movie{ID: "2", Isbn: "293764", Title: "Movie Two", Director: &Director{Firstname: "John", Lastname: "Doe"}})
 
 	r.HandleFunc("/movies", getMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie).Methods("GET")
