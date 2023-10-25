@@ -10,7 +10,9 @@ var (
 )
 
 func Connect() { // User : Pwd / Table
-	d, err := gorm.Open("mysql", "martin:password/simplerest?charset=utf8&parseTime=True&loc=Local")
+	dsn := "martin:password@tcp(localhost:3306)/PROJECTS?charset=utf8mb4&parseTime=True&loc=Local"
+	d, err := gorm.Open("mysql", dsn)
+	d.DB().SetMaxIdleConns(0)
 	if err != nil {
 		panic(err)
 	}
