@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/MMMarinov/GoProjects/tree/Project3-BookstoreManagementAPI/Project3-BookManagementAPI/pkg/config"
+	"github.com/MMMarinov/GoProjects/tree/main/Project3-BookManagementAPI/pkg/config"
 	"github.com/jinzhu/gorm"
 )
 

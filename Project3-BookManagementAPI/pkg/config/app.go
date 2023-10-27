@@ -9,7 +9,7 @@ var (
 	db *gorm.DB
 )
 
-func Connect() { // User : Pwd / Table
+func Connect() { // User:Pwd@Address:Port/DB
 	dsn := "martin:password@tcp(localhost:3306)/PROJECTS?charset=utf8mb4&parseTime=True&loc=Local"
 	d, err := gorm.Open("mysql", dsn)
 	d.DB().SetMaxIdleConns(0)

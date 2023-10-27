@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/MMMarinov/GoProjects/tree/Project3-BookstoreManagementAPI/Project3-BookManagementAPI/pkg/controllers"
+	"github.com/MMMarinov/GoProjects/tree/main/Project3-BookManagementAPI/pkg/controllers"
 	"github.com/gorilla/mux"
 )
 

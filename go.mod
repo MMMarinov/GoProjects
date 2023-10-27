@@ -1,4 +1,4 @@
-module github.com/MMMarinov/GoProjects/tree/Project3-BookstoreManagementAPI
+module github.com/MMMarinov/GoProjects/tree/main
 
 go 1.21.3
 
